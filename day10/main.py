@@ -50,7 +50,6 @@ def getStatsFromTransitions(transitions):
         if maxX < point.posX:
             maxX = point.posX  
 
-        sumOfIndex = point.posX + point.posY
         starsIndexPairs[(point.posX, point.posY)] = True
     
     return {'minY': minY, 'maxY': maxY, 'minX': minX, 'maxX': maxX, 'starsCoordinates': starsIndexPairs}
@@ -58,8 +57,9 @@ def getStatsFromTransitions(transitions):
 def main():
     transitions = getTransitionsFromFile('day10/input_test.txt')
     c = 0
+    transitionEvolutionLimit = 6
 
-    while c <= 6 :
+    while c <= transitionEvolutionLimit :
         time.sleep(1)
         c += 1
 
