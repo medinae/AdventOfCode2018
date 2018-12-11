@@ -2,15 +2,14 @@ class FuelMatrixParser:
     def getTopLeftCellCoordWithHigherSum(self, matrix, squareSize = 3):
         hi = {'coordinates': (0, 0), 'sum': 0}
         rows = matrix.rows
-
         for i in range(matrix.size):
             for j in range(matrix.size):
                 if not self.__cellExist(i + squareSize, j, rows) or not self.__cellExist(i, j + squareSize, rows):
                     continue
                 
                 currentSum = 0
-                for a in range(i, i + squareSize + 1):
-                    for b in range(j, j + squareSize + 1):
+                for a in range(i, i + squareSize):
+                    for b in range(j, j + squareSize):
                         currentSum += rows[a][b]
 
                 if currentSum > hi['sum']:
@@ -52,7 +51,7 @@ class FuelMatrix:
 
 
 def main():
-    fuelMatrix = FuelMatrix(42)
+    fuelMatrix = FuelMatrix(5177)
     parser = FuelMatrixParser()
 
     print(parser.getTopLeftCellCoordWithHigherSum(fuelMatrix))
